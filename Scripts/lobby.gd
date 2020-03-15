@@ -1,5 +1,17 @@
 extends Control
 
+onready var Connect = $connect
+onready var Players = $players
+onready var Stop = $connect/stop
+onready var Name = $connect/name
+onready var ErrorLabel = $connect/error_label
+onready var Host = $connect/host
+onready var Join = $connect/join
+onready var Error = $error
+onready var Ip = $connect/ip
+onready var PlayerList = $players/list
+onready var PlayersStart = $players/start
+
 func _ready():
 	# Called every time the node is added to the scene.
 	gamestate.connect("connection_failed", self, "_on_connection_failed")
@@ -9,68 +21,73 @@ func _ready():
 	gamestate.connect("game_error", self, "_on_game_error")
 
 func _on_host_pressed():
-	if get_node("connect/name").text == "":
-		get_node("connect/error_label").text = "Invalid name!"
+	if Name.text == "":
+		ErrorLabel.text = "Invalid name!"
 		return
 
-	get_node("connect").hide()
-	get_node("players").show()
-	get_node("connect/error_label").text = ""
+	Connect.hide()
+	Players.show()
+	ErrorLabel.text = ""
 
-	var player_name = get_node("connect/name").text
+	var player_name = Name.text
 	gamestate.host_game(player_name)
 	refresh_lobby()
 
 func _on_join_pressed():
-	if get_node("connect/name").text == "":
-		get_node("connect/error_label").text = "Invalid name!"
+	if Name.text == "":
+		ErrorLabel.text = "Invalid name!"
 		return
 
-	var ip = get_node("connect/ip").text
+	var ip = Ip.text
 	if not ip.is_valid_ip_address():
-		get_node("connect/error_label").text = "Invalid IPv4 address!"
+		ErrorLabel.text = "Invalid IPv4 address!"
 		return
 
-	get_node("connect/error_label").text=""
-	get_node("connect/host").disabled = true
-	get_node("connect/join").disabled = true
+	ErrorLabel.text=""
+	Host.disabled = true
+	Join.disabled = true
 
-	var player_name = get_node("connect/name").text
+	var player_name = Name.text
 	gamestate.join_game(ip, player_name)
+	Stop.disabled = false
 	# refresh_lobby() gets called by the player_list_changed signal
 
 func _on_connection_success():
-	get_node("connect").hide()
-	get_node("players").show()
+	Connect.hide()
+	Players.show()
 
 func _on_connection_failed():
-	get_node("connect/host").disabled = false
-	get_node("connect/join").disabled = false
-	get_node("connect/error_label").set_text("Connection failed.")
+	Host.disabled = false
+	Join.disabled = false
+	ErrorLabel.set_text("Connection failed.")
 
 func _on_game_ended():
 	show()
-	get_node("connect").show()
-	get_node("players").hide()
-	get_node("connect/host").disabled = false
+	Connect.show()
+	Players.hide()
+	Host.disabled = false
 
 func _on_game_error(errtxt):
-	get_node("error").dialog_text = errtxt
-	get_node("error").popup_centered_minsize()
+	Error.dialog_text = errtxt
+	Error.popup_centered_minsize()
 
 func refresh_lobby():
 	var players = gamestate.get_player_list()
 	players.sort()
-	get_node("players/list").clear()
-	get_node("players/list").add_item(gamestate.get_player_name() + " (You)")
+	PlayerList.clear()
+	PlayerList.add_item(gamestate.get_player_name() + " (You)")
 	for p in players:
-		get_node("players/list").add_item(p)
+		PlayerList.add_item(p)
 
-	get_node("players/start").disabled = not get_tree().is_network_server()
+	PlayersStart.disabled = not get_tree().is_network_server()
 
 func _on_start_pressed():
 	gamestate.begin_game()
 
 func _on_leave_pressed():
-	get_node("connect").show()
-	get_node("players").hide()
+	Connect.show()
+	Players.hide()
+
+func _on_stop_pressed():
+	get_tree().emit_signal("connection_failed")
+	Stop.disabled = true;
