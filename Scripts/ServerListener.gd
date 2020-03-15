@@ -6,7 +6,7 @@ signal remove_server
 
 var cleanUpTimer := Timer.new()
 var socketUDP := PacketPeerUDP.new()
-var listenPort := gamestate.DEFAULT_PORT
+var listenPort := ServerAdvertiser.DEFAULT_PORT
 var knownServers = {}
 
 # Number of seconds to wait when a server hasn't been heard from

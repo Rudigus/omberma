@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Omberma"
-run/main_scene="res://Scenes/lobby.tscn"
+run/main_scene="res://Scenes/main_menu.tscn"
 
 [autoload]
 

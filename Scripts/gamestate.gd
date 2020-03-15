@@ -66,7 +66,7 @@ remote func pre_start_game(spawn_points):
 	var world = load("res://Scenes/world.tscn").instance()
 	get_tree().get_root().add_child(world)
 
-	get_tree().get_root().get_node("lobby").hide()
+	get_tree().get_root().get_node("room").hide()
 
 	var player_scene = load("res://Scenes/player.tscn")
 
@@ -119,7 +119,7 @@ func host_game(new_player_name):
 	var host = NetworkedMultiplayerENet.new()
 	host.create_server(DEFAULT_PORT, MAX_PEERS)
 	get_tree().set_network_peer(host)
-	print(get_tree().is_network_server())
+	print("Server? ", get_tree().is_network_server())
 
 func join_game(ip, new_player_name):
 	player_name = new_player_name

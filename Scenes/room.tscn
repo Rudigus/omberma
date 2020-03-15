@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/ServerAdvertiser.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/room.gd" type="Script" id=2]
+
+[node name="room" type="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -126.0
+margin_top = -177.5
+margin_right = 126.0
+margin_bottom = 177.5
+size_flags_horizontal = 2
+size_flags_vertical = 2
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="Label" parent="."]
+margin_left = 26.0
+margin_top = 18.0
+margin_right = 142.0
+margin_bottom = 32.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "Awaiting Players..."
+
+[node name="start" type="Button" parent="."]
+margin_left = 25.9025
+margin_top = 307.0
+margin_right = 114.902
+margin_bottom = 336.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "START!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="leave" type="Button" parent="."]
+margin_left = 138.119
+margin_top = 307.0
+margin_right = 227.119
+margin_bottom = 336.0
+text = "LEAVE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="list" type="ItemList" parent="."]
+margin_left = 25.0
+margin_top = 37.0
+margin_right = 229.0
+margin_bottom = 296.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="advertiser" type="Node" parent="."]
+script = ExtResource( 1 )
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="leave" to="." method="_on_leave_pressed"]
