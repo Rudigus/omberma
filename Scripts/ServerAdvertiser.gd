@@ -1,17 +1,15 @@
 extends Node
 class_name ServerAdvertiser, 'res://Assets/ServerAdvertiser.png'
 
-const DEFAULT_PORT := 3111
-
 # How often to broadcast out to the network that this host is active
 export (float) var broadcast_interval: float = 1.0
-var serverInfo := {"name": "LAN Game"}
+var serverInfo := {"name": "LAN Game", "port": gamestate.DEFAULT_PORT}
 
 var socketUDP: PacketPeerUDP
 var broadcastTimer := Timer.new()
-var broadcastPort := DEFAULT_PORT
+var broadcastPort := gamestate.DEFAULT_PORT
 
-func _enter_tree():
+func initialize():
 	broadcastTimer.wait_time = broadcast_interval
 	broadcastTimer.one_shot = false
 	broadcastTimer.autostart = true
@@ -30,7 +28,7 @@ func broadcast():
 	var packet := packetMessage.to_ascii()
 	socketUDP.put_packet(packet)
 
-func _exit_tree():
+func shutdown():
 	broadcastTimer.stop()
 	if socketUDP != null:
 		socketUDP.close()

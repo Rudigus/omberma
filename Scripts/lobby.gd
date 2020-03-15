@@ -2,15 +2,15 @@ extends Control
 
 onready var Connect = $connect
 onready var Players = $players
-onready var Stop = $connect/stop
 onready var Name = $connect/name
 onready var ErrorLabel = $connect/error_label
 onready var Host = $connect/host
-onready var Join = $connect/join
 onready var Error = $error
-onready var Ip = $connect/ip
 onready var PlayerList = $players/list
 onready var PlayersStart = $players/start
+onready var Title = $title
+onready var Advertiser = $players/advertiser
+onready var Servers = $servers
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -27,38 +27,37 @@ func _on_host_pressed():
 
 	Connect.hide()
 	Players.show()
+	Title.hide()
 	ErrorLabel.text = ""
 
 	var player_name = Name.text
 	gamestate.host_game(player_name)
 	refresh_lobby()
-
-func _on_join_pressed():
+	Advertiser.initialize()
+	
+func _on_browse_pressed():
 	if Name.text == "":
 		ErrorLabel.text = "Invalid name!"
 		return
-
-	var ip = Ip.text
-	if not ip.is_valid_ip_address():
-		ErrorLabel.text = "Invalid IPv4 address!"
-		return
-
+		
+	Connect.hide()
+	Servers.show()
+	Title.hide()
 	ErrorLabel.text=""
-	Host.disabled = true
-	Join.disabled = true
 
-	var player_name = Name.text
-	gamestate.join_game(ip, player_name)
-	Stop.disabled = false
+	#var player_name = Name.text
+	#gamestate.join_game(ip, player_name)
 	# refresh_lobby() gets called by the player_list_changed signal
 
 func _on_connection_success():
 	Connect.hide()
 	Players.show()
+	Title.hide()
 
 func _on_connection_failed():
-	Host.disabled = false
-	Join.disabled = false
+	#Host.disabled = false
+	#Join.disabled = false
+	#Stop.disabled = true;
 	ErrorLabel.set_text("Connection failed.")
 
 func _on_game_ended():
@@ -87,7 +86,13 @@ func _on_start_pressed():
 func _on_leave_pressed():
 	Connect.show()
 	Players.hide()
+	Title.show()
+	Advertiser.shutdown()
 
 func _on_stop_pressed():
 	get_tree().emit_signal("connection_failed")
-	Stop.disabled = true;
+
+func _on_back_pressed():
+	Servers.hide()
+	Connect.show()
+	Title.show()
