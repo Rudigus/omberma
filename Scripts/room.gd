@@ -19,6 +19,8 @@ func refresh_room():
 	GameStart.disabled = not get_tree().is_network_server()
 	
 func _on_leave_pressed():
+	if get_tree().is_network_server():
+		gamestate.players.clear()
 	get_tree().set_network_peer(null)
 	get_tree().change_scene_to(Lobby)
 

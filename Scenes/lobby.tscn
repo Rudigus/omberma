@@ -1,13 +1,19 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://Scenes/error.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Resources/Ubuntu.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Scripts/ServerListener.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/lobby.gd" type="Script" id=4]
 
 [node name="lobby" type="Panel"]
-margin_left = 386.0
-margin_top = 122.5
-margin_right = 638.0
-margin_bottom = 477.5
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -126.0
+margin_top = -177.5
+margin_right = 126.0
+margin_bottom = 177.5
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -16,9 +22,10 @@ serverListPath = NodePath("list")
 
 [node name="label" type="Label" parent="."]
 margin_left = 26.0
-margin_top = 18.0
-margin_right = 93.0
-margin_bottom = 32.0
+margin_top = 10.1972
+margin_right = 102.0
+margin_bottom = 29.1972
+custom_fonts/font = ExtResource( 2 )
 text = "Server List"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -26,9 +33,10 @@ __meta__ = {
 
 [node name="back" type="Button" parent="."]
 margin_left = 138.119
-margin_top = 307.0
+margin_top = 310.258
 margin_right = 227.119
-margin_bottom = 336.0
+margin_bottom = 339.258
+custom_fonts/font = ExtResource( 2 )
 text = "BACK"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -45,6 +53,10 @@ __meta__ = {
 
 [node name="listener" type="Node" parent="."]
 script = ExtResource( 3 )
+
+[node name="error" parent="." instance=ExtResource( 1 )]
+margin_right = 83.0
+popup_exclusive = true
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]
 [connection signal="item_activated" from="list" to="." method="_on_list_item_activated"]
 [connection signal="new_server" from="listener" to="." method="_on_listener_new_server"]

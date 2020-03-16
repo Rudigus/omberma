@@ -4,6 +4,18 @@ export (NodePath) var serverListPath: NodePath
 onready var ServerList := get_node(serverListPath)
 onready var MainMenu = load("res://Scenes/main_menu.tscn")
 onready var Room = preload("res://Scenes/room.tscn")
+onready var Error = $error
+
+# Signals are bad. Remember it. In the end, changing
+# a variable in singleton and checking for it is
+# the best. Don't judge me.
+
+func _ready():
+	if gamestate.errtxt != "":
+		Error.dialog_text = gamestate.errtxt
+		print(Error.dialog_text)
+		Error.popup_centered_minsize()
+		gamestate.errtxt = ""
 
 func _on_listener_new_server(serverInfo):
 	# Create some UI for the newly found server
@@ -25,3 +37,7 @@ func _on_list_item_activated(index):
 	gamestate.join_game(gamestate.servers[index].ip, \
 	gamestate.player_name)
 	get_tree().change_scene_to(Room)
+	
+#func _on_game_error(errtxt):
+#	Error.dialog_text = errtxt
+#	Error.popup_centered_minsize()

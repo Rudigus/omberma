@@ -16,12 +16,17 @@ var players = {}
 
 var servers = {}
 
+# Error in the game
+var errtxt = ""
+
+onready var Lobby = preload("res://Scenes/lobby.tscn")
+
 # Signals to let lobby GUI know what's going on
 signal player_list_changed()
 signal connection_failed()
 signal connection_succeeded()
-signal game_ended()
-signal game_error(what)
+#signal game_ended()
+#signal game_error(what)
 
 # Callback from SceneTree
 func _player_connected(id):
@@ -32,7 +37,9 @@ func _player_connected(id):
 func _player_disconnected(id):
 	if has_node("/root/world"): # Game is in progress
 		if get_tree().is_network_server():
-			emit_signal("game_error", "Player " + players[id] + " disconnected")
+#			get_tree().change_scene_to(Lobby)
+			#emit_signal("game_error", "Player " + players[id] + " disconnected")
+			errtxt = "Player " + players[id] + " disconnected"
 			end_game()
 	else: # Game is not in progress
 		# Unregister this player
@@ -45,7 +52,9 @@ func _connected_ok():
 
 # Callback from SceneTree, only for clients (not server)
 func _server_disconnected():
-	emit_signal("game_error", "Server disconnected")
+#	get_tree().change_scene_to(Lobby)
+	#emit_signal("game_error", "Server disconnected")
+	errtxt = "Server disconnected"
 	end_game()
 
 # Callback from SceneTree, only for clients (not server)
@@ -157,9 +166,11 @@ func end_game():
 	if has_node("/root/world"): # Game is in progress
 		# End it
 		get_node("/root/world").queue_free()
-
-	emit_signal("game_ended")
+	
+	#emit_signal("game_ended")
 	players.clear()
+	
+	get_tree().change_scene_to(Lobby)
 
 func _ready():
 	get_tree().connect("network_peer_connected", self, "_player_connected")
