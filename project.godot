@@ -27,7 +27,9 @@ _global_script_class_icons={
 [application]
 
 config/name="Omberma"
+config/description="Bomberman-like game that supports LAN play."
 run/main_scene="res://Scenes/main_menu.tscn"
+config/icon="res://Icons/bomb_icon.png"
 
 [autoload]
 
@@ -46,6 +48,7 @@ window/stretch/aspect="expand"
 [gdnative]
 
 singletons=[  ]
+icon="res://Icons/bomb_icon.png"
 
 [image_loader]
 
