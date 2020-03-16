@@ -29,7 +29,7 @@ margin_left = 138.119
 margin_top = 307.0
 margin_right = 227.119
 margin_bottom = 336.0
-text = "LEAVE"
+text = "BACK"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -46,5 +46,6 @@ __meta__ = {
 [node name="listener" type="Node" parent="."]
 script = ExtResource( 3 )
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]
+[connection signal="item_activated" from="list" to="." method="_on_list_item_activated"]
 [connection signal="new_server" from="listener" to="." method="_on_listener_new_server"]
 [connection signal="remove_server" from="listener" to="." method="_on_listener_remove_server"]

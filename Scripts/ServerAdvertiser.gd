@@ -16,6 +16,9 @@ func _enter_tree():
 	broadcastTimer.one_shot = false
 	broadcastTimer.autostart = true
 	
+	# Place to put fixed server info
+	serverInfo["name"] = gamestate.player_name
+	
 	if get_tree().is_network_server():
 		add_child(broadcastTimer)
 		broadcastTimer.connect("timeout", self, "broadcast") 
@@ -26,6 +29,12 @@ func _enter_tree():
 
 func broadcast():
 	#print('Broadcasting game...')
+	
+	# Place to put changing server info
+	print(gamestate.players)
+	serverInfo["playersCount"] = "%d/%d" % \
+	[gamestate.players.size() + 1, gamestate.MAX_PEERS]
+	
 	var packetMessage := to_json(serverInfo)
 	var packet := packetMessage.to_ascii()
 	socketUDP.put_packet(packet)

@@ -12,6 +12,10 @@ var player_name = "The Warrior"
 # Names for remote players in id:name format
 var players = {}
 
+# Servers found
+
+var servers = {}
+
 # Signals to let lobby GUI know what's going on
 signal player_list_changed()
 signal connection_failed()
@@ -156,7 +160,6 @@ func end_game():
 
 	emit_signal("game_ended")
 	players.clear()
-	get_tree().set_network_peer(null) # End networking
 
 func _ready():
 	get_tree().connect("network_peer_connected", self, "_player_connected")
