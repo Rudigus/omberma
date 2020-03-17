@@ -130,7 +130,10 @@ remote func ready_to_start(id):
 func host_game(new_player_name):
 	player_name = new_player_name
 	var host = NetworkedMultiplayerENet.new()
-	host.create_server(DEFAULT_PORT, MAX_PEERS)
+	var error = host.create_server(DEFAULT_PORT, MAX_PEERS)
+	# Couldn't create the server
+	if(error == 20):
+		return
 	get_tree().set_network_peer(host)
 	print("Server? ", get_tree().is_network_server())
 
@@ -169,7 +172,7 @@ func end_game():
 	
 	#emit_signal("game_ended")
 	players.clear()
-	
+	print("ok")
 	get_tree().change_scene_to(Lobby)
 
 func _ready():

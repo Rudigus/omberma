@@ -32,12 +32,13 @@ func _on_listener_remove_server(serverIp):
 
 func _on_back_pressed():
 	get_tree().change_scene_to(MainMenu)
-
-func _on_list_item_activated(index):
-	gamestate.join_game(gamestate.servers[index].ip, \
-	gamestate.player_name)
-	get_tree().change_scene_to(Room)
 	
 #func _on_game_error(errtxt):
 #	Error.dialog_text = errtxt
 #	Error.popup_centered_minsize()
+
+
+func _on_list_item_selected(index):
+	gamestate.join_game(gamestate.servers[index].ip, \
+	gamestate.player_name)
+	get_tree().change_scene_to(Room)

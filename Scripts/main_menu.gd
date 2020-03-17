@@ -18,11 +18,17 @@ func _on_host_pressed():
 	if Name.text == "":
 		ErrorLabel.text = "Invalid name!"
 		return
-
-	ErrorLabel.text = ""
-	get_tree().change_scene_to(Room)
+	#if server_running():
+	# Server can be already running on the same machine
+	#	ErrorLabel.text = "Couldn't create server."
+	#	return
+	
 	var player_name = Name.text
 	gamestate.host_game(player_name)
+	if(!get_tree().has_network_peer()):
+		ErrorLabel.text = "Couldn't create server"
+		return
+	get_tree().change_scene_to(Room)
 	
 func _on_browse_pressed():
 	if Name.text == "":
@@ -30,7 +36,6 @@ func _on_browse_pressed():
 		return
 		
 	gamestate.player_name = Name.text
-	ErrorLabel.text=""
 	get_tree().change_scene_to(Lobby)
 
 #func _on_connection_success():

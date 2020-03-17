@@ -73,7 +73,7 @@ margin_right = 83.0
 theme = ExtResource( 6 )
 popup_exclusive = true
 window_title = "Alert"
-[connection signal="item_activated" from="menu/list" to="." method="_on_list_item_activated"]
+[connection signal="item_selected" from="menu/list" to="." method="_on_list_item_selected"]
 [connection signal="pressed" from="menu/back" to="." method="_on_back_pressed"]
 [connection signal="new_server" from="menu/listener" to="." method="_on_listener_new_server"]
 [connection signal="remove_server" from="menu/listener" to="." method="_on_listener_remove_server"]

@@ -7,6 +7,7 @@ onready var Lobby = load("res://Scenes/lobby.tscn")
 
 func _ready():
 	gamestate.connect("player_list_changed", self, "refresh_room")
+	refresh_room()
 
 func refresh_room():
 	var players = gamestate.get_player_list()
@@ -19,8 +20,7 @@ func refresh_room():
 	GameStart.disabled = not get_tree().is_network_server()
 	
 func _on_leave_pressed():
-	if get_tree().is_network_server():
-		gamestate.players.clear()
+	gamestate.players.clear()
 	get_tree().set_network_peer(null)
 	get_tree().change_scene_to(Lobby)
 
