@@ -1,10 +1,9 @@
 extends Control
 
-onready var Connect = $connect
-onready var Name = $connect/name
-onready var ErrorLabel = $connect/error_label
-onready var Host = $connect/host
-onready var Title = $title
+onready var Title = $menu/title
+onready var Name = $menu/host/name_edit
+onready var ErrorLabel = $menu/error_label
+onready var Host = $menu/host/host_button
 onready var Lobby = preload("res://Scenes/lobby.tscn")
 onready var Room = preload("res://Scenes/room.tscn")
 

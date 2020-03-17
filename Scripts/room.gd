@@ -1,7 +1,7 @@
-extends Panel
+extends Control
 
-onready var PlayerList = $list
-onready var GameStart = $start
+onready var PlayerList = $menu/list
+onready var GameStart = $menu/buttons/start
 onready var MainMenu = load("res://Scenes/main_menu.tscn")
 onready var Lobby = load("res://Scenes/lobby.tscn")
 

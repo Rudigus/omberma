@@ -4,36 +4,50 @@
 [ext_resource path="res://Resources/Ubuntu.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Resources/Bitter.tres" type="DynamicFont" id=3]
 
-[node name="main_menu" type="Control"]
+[node name="main_menu" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
+custom_constants/margin_right = 100
+custom_constants/margin_top = 100
+custom_constants/margin_left = 100
+custom_constants/margin_bottom = 100
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="connect" type="Panel" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -138.5
-margin_top = -83.5
-margin_right = 138.5
-margin_bottom = 83.5
-size_flags_horizontal = 2
-size_flags_vertical = 2
+[node name="menu" type="VBoxContainer" parent="."]
+margin_left = 100.0
+margin_top = 100.0
+margin_right = 924.0
+margin_bottom = 500.0
+custom_constants/separation = 40
+
+[node name="title" type="Label" parent="menu"]
+margin_left = 237.0
+margin_right = 587.0
+margin_bottom = 88.0
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 3 )
+text = "Omberma"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name_label" type="Label" parent="connect"]
-margin_left = 14.0
-margin_top = 11.0
-margin_right = 56.0
-margin_bottom = 25.0
+[node name="host" type="GridContainer" parent="menu"]
+margin_left = 299.0
+margin_top = 128.0
+margin_right = 524.0
+margin_bottom = 216.0
+size_flags_horizontal = 4
+custom_constants/hseparation = 50
+columns = 2
+
+[node name="name_label" type="Label" parent="menu/host"]
+margin_right = 94.0
+margin_bottom = 37.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
@@ -42,21 +56,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name" type="LineEdit" parent="connect"]
-margin_left = 17.0
-margin_top = 30.0
-margin_right = 173.0
-margin_bottom = 54.0
+[node name="spacer" type="Control" parent="menu/host"]
+margin_left = 144.0
+margin_right = 225.0
+margin_bottom = 37.0
+
+[node name="name_edit" type="LineEdit" parent="menu/host"]
+margin_top = 41.0
+margin_right = 94.0
+margin_bottom = 88.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 custom_fonts/font = ExtResource( 2 )
 text = "Joe"
+caret_blink = true
+caret_blink_speed = 0.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="host" type="Button" parent="connect"]
-margin_left = 181.0
-margin_top = 31.0
-margin_right = 246.0
-margin_bottom = 51.0
+[node name="host_button" type="Button" parent="menu/host"]
+margin_left = 144.0
+margin_top = 41.0
+margin_right = 225.0
+margin_bottom = 84.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 custom_fonts/font = ExtResource( 2 )
@@ -65,38 +88,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="browse" type="Button" parent="connect"]
-margin_left = 86.6577
-margin_top = 112.847
-margin_right = 196.658
-margin_bottom = 132.847
-size_flags_horizontal = 2
-size_flags_vertical = 2
+[node name="browse" type="Button" parent="menu"]
+margin_left = 294.0
+margin_top = 256.0
+margin_right = 529.0
+margin_bottom = 299.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
 text = "Browse Servers"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="error_label" type="Label" parent="connect"]
-margin_left = 61.6541
-margin_top = 79.5123
-margin_right = 218.654
-margin_bottom = 93.5123
-size_flags_horizontal = 2
+[node name="error_label" type="Label" parent="menu"]
+margin_left = 412.0
+margin_top = 339.0
+margin_right = 412.0
+margin_bottom = 376.0
+size_flags_horizontal = 4
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.820312, 0.291595, 0.291595, 1 )
 align = 1
-
-[node name="title" type="Label" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -116.0
-margin_top = 100.0
-margin_right = 116.0
-margin_bottom = 158.0
-custom_fonts/font = ExtResource( 3 )
-text = "Omberma"
-[connection signal="pressed" from="connect/host" to="." method="_on_host_pressed"]
-[connection signal="pressed" from="connect/browse" to="." method="_on_browse_pressed"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="menu/host/host_button" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="menu/browse" to="." method="_on_browse_pressed"]

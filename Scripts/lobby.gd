@@ -4,7 +4,7 @@ export (NodePath) var serverListPath: NodePath
 onready var ServerList := get_node(serverListPath)
 onready var MainMenu = load("res://Scenes/main_menu.tscn")
 onready var Room = preload("res://Scenes/room.tscn")
-onready var Error = $error
+onready var Error = $menu/error
 
 # Signals are bad. Remember it. In the end, changing
 # a variable in singleton and checking for it is
