@@ -18,6 +18,11 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+defaultSettings = {
+"Blast Power": 1,
+"Bombs": 1,
+"Player Speed": 1
+}
 
 [node name="menu" type="VBoxContainer" parent="."]
 margin_left = 200.0
@@ -35,13 +40,68 @@ size_flags_vertical = 0
 custom_fonts/font = ExtResource( 3 )
 text = "Awaiting Players..."
 
-[node name="list" type="ItemList" parent="menu"]
+[node name="main_area" type="VBoxContainer" parent="menu"]
 margin_top = 77.0
 margin_right = 624.0
 margin_bottom = 417.0
+size_flags_vertical = 3
+
+[node name="lists" type="TabContainer" parent="menu/main_area"]
+margin_right = 624.0
+margin_bottom = 340.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="players" type="ItemList" parent="menu/main_area/lists"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 4 )
+
+[node name="settings" type="ItemList" parent="menu/main_area/lists"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 4 )
+select_mode = 1
+
+[node name="modifiers" type="HBoxContainer" parent="menu/main_area"]
+visible = false
+margin_top = 320.0
+margin_right = 624.0
+margin_bottom = 340.0
+
+[node name="increase" type="Button" parent="menu/main_area/modifiers"]
+margin_right = 310.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="decrease" type="Button" parent="menu/main_area/modifiers"]
+margin_left = 314.0
+margin_right = 624.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="buttons" type="HBoxContainer" parent="menu"]
 margin_left = 196.0
@@ -75,5 +135,8 @@ __meta__ = {
 
 [node name="advertiser" type="Node" parent="menu"]
 script = ExtResource( 1 )
+[connection signal="tab_changed" from="menu/main_area/lists" to="." method="_on_lists_tab_changed"]
+[connection signal="pressed" from="menu/main_area/modifiers/increase" to="." method="_on_increase_pressed"]
+[connection signal="pressed" from="menu/main_area/modifiers/decrease" to="." method="_on_decrease_pressed"]
 [connection signal="pressed" from="menu/buttons/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="menu/buttons/leave" to="." method="_on_leave_pressed"]

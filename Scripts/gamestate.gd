@@ -12,6 +12,10 @@ var player_name = "The Warrior"
 # Names for remote players in id:name format
 var players = {}
 
+# Room settings
+
+var settings = {}
+
 # Servers found
 
 var servers = {}
@@ -21,8 +25,11 @@ var errtxt = ""
 
 onready var Lobby = preload("res://Scenes/lobby.tscn")
 
+#onready var Room = preload("res://Scenes/room.tscn")
+
 # Signals to let lobby GUI know what's going on
 signal player_list_changed()
+#signal settings_list_changed()
 signal connection_failed()
 signal connection_succeeded()
 #signal game_ended()
@@ -135,7 +142,7 @@ func host_game(new_player_name):
 	if(error == 20):
 		return
 	get_tree().set_network_peer(host)
-	print("Server? ", get_tree().is_network_server())
+	#print("Server? ", get_tree().is_network_server())
 
 func join_game(ip, new_player_name):
 	player_name = new_player_name
@@ -172,7 +179,6 @@ func end_game():
 	
 	#emit_signal("game_ended")
 	players.clear()
-	print("ok")
 	get_tree().change_scene_to(Lobby)
 
 func _ready():

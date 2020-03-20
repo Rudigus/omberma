@@ -31,7 +31,7 @@ func broadcast():
 	#print('Broadcasting game...')
 	
 	# Place to put changing server info
-	print(gamestate.players)
+	#print(gamestate.players)
 	serverInfo["playersCount"] = "%d/%d" % \
 	[gamestate.players.size() + 1, gamestate.MAX_PEERS]
 	
