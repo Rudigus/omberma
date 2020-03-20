@@ -139,7 +139,7 @@ __meta__ = {
 [node name="advertiser" type="Node" parent="menu"]
 script = ExtResource( 1 )
 [connection signal="tab_changed" from="menu/main_area/lists" to="." method="_on_lists_tab_changed"]
-[connection signal="pressed" from="menu/main_area/modifiers/increase" to="." method="_on_increase_pressed"]
-[connection signal="pressed" from="menu/main_area/modifiers/decrease" to="." method="_on_decrease_pressed"]
+[connection signal="pressed" from="menu/main_area/modifiers/increase" to="." method="_on_modifier_button_pressed" binds= [ 1 ]]
+[connection signal="pressed" from="menu/main_area/modifiers/decrease" to="." method="_on_modifier_button_pressed" binds= [ -1 ]]
 [connection signal="pressed" from="menu/buttons/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="menu/buttons/leave" to="." method="_on_leave_pressed"]

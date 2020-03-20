@@ -29,7 +29,7 @@ onready var Lobby = preload("res://Scenes/lobby.tscn")
 
 # Signals to let lobby GUI know what's going on
 signal player_list_changed()
-#signal settings_list_changed()
+signal settings_list_changed()
 signal connection_failed()
 signal connection_succeeded()
 #signal game_ended()
@@ -70,6 +70,15 @@ func _connected_fail():
 	emit_signal("connection_failed")
 
 # Lobby management functions
+
+func _on_settings_changed(changed_settings):
+	rpc("update_settings", changed_settings)
+
+remote func update_settings(changed_settings):
+	for s in changed_settings.keys():
+		gamestate.settings[s] = changed_settings[s]
+	emit_signal("settings_list_changed")
+	
 
 remote func register_player(new_player_name):
 	var id = get_tree().get_rpc_sender_id()
