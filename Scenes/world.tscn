@@ -293,6 +293,9 @@ text = "THE WINNER IS:
 YOU"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="exit_game" type="Button" parent="winner"]
 margin_left = 384.0

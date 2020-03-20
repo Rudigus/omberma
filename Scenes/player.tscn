@@ -4,9 +4,6 @@
 [ext_resource path="res://Assets/charwalk.png" type="Texture" id=2]
 [ext_resource path="res://Resources/montserrat.otf" type="DynamicFontData" id=3]
 
-
-
-
 [sub_resource type="CircleShape2D" id=1]
 radius = 20.0
 
@@ -169,4 +166,3 @@ size_flags_vertical = 0
 custom_fonts/font = SubResource( 8 )
 text = "Player 1"
 align = 1
-

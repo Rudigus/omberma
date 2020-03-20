@@ -4,8 +4,6 @@
 [ext_resource path="res://Assets/brickfloor.png" type="Texture" id=2]
 [ext_resource path="res://Assets/explosion.png" type="Texture" id=3]
 
-
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 96 )
 
@@ -121,6 +119,5 @@ texture = ExtResource( 3 )
 [node name="anim" type="AnimationPlayer" parent="."]
 autoplay = "anim"
 anims/anim = SubResource( 6 )
-
 [connection signal="body_entered" from="." to="." method="_on_bomb_body_enter"]
 [connection signal="body_exited" from="." to="." method="_on_bomb_body_exit"]

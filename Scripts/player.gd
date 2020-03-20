@@ -7,6 +7,8 @@ puppet var puppet_motion = Vector2()
 
 export var stunned = false
 
+var playerLives = gamestate.settings["Player Lives"]
+
 # Use sync because it will be called everywhere
 sync func setup_bomb(bomb_name, pos, by_who):
 	var bomb = preload("res://Scenes/bomb.tscn").instance()
@@ -80,11 +82,18 @@ puppet func stun():
 master func exploded(_by_who):
 	if stunned:
 		return
+	rpc("decrease_player_lives")
 	rpc("stun") # Stun puppets
 	stun() # Stun master - could use sync to do both at once
 
 func set_player_name(new_name):
 	get_node("label").set_text(new_name)
+	
+remotesync func decrease_player_lives():
+	playerLives -= 1
+	print(playerLives)
+	if playerLives <= 0:
+		queue_free()
 
 func _ready():
 	stunned = false
