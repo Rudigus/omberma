@@ -20,7 +20,9 @@ __meta__ = {
 }
 defaultSettings = {
 "Blast Power": 1,
+"Bomb Timeout": 3,
 "Bombs": 1,
+"Player Lives": 1,
 "Player Speed": 1
 }
 
@@ -76,6 +78,7 @@ margin_bottom = -4.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 4 )
+items = [ "Item 0", null, false ]
 select_mode = 1
 
 [node name="modifiers" type="HBoxContainer" parent="menu/main_area"]
