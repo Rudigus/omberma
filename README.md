@@ -1,7 +1,7 @@
 # omberma
 I'm interested in decentralized networking, so I'll try to learn about it and apply in this game. Also, I wanted to make a game to play with my friends on mobile (via wireless ad-hoc network), without the need for Internet access. The LAN system is basically done, but the game is bare-bones.
 
-Still, I would like to implement ways of connecting over the Internet too. Without a centralized server, that is. The server will still be one of the players. From my researches, there are basically 3 ways (that I know) to accomplish what I want:
+Still, I would like to implement ways of connecting over the Internet too. Without a centralized server, that is. The server will still be one of the players. Based on my research, there are basically 3 ways (that I know) to accomplish what I want:
 
 1º - Port forwarding - requires the host to go to his router settings and do the process manually. Not very user-friendly.
 
