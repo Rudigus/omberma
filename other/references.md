@@ -1,4 +1,6 @@
-Some tutorials about networking that might be interesting:
+# References
+
+## Tutorials about networking in Godot:
 
 http://kehomsforge.com/tutorials/multi/gdMultiplayerSetup/
 
@@ -6,19 +8,15 @@ https://gitlab.com/menip/godot-multiplayer-tutorials
 
 https://mrminimal.gitlab.io/2018/07/26/godot-dedicated-server-tutorial.html
 
-Godot support for interesting things:
+## Godot classes:
 
 https://docs.godotengine.org/en/latest/classes/class_upnp.html
 
-Summary of networking options:
+## Networking information:
 
 https://godotengine.org/qa/43665/how-connect-two-device-with-live-server-not-localhost-godot
 
-history:
-
 https://gafferongames.com/post/what_every_programmer_needs_to_know_about_game_networking/
-
-P2P:
 
 https://gamedev.stackexchange.com/questions/67738/limitations-of-p2p-multiplayer-games-vs-client-server
 
