@@ -1,4 +1,7 @@
 # omberma
+
+Disclaimer: I'm using a client-server model, so I'm not sure if decentralized networking is an appropriate wording. Still, what I wanted to convey was a network without the use of one central hosted server. The servers will be the players who host rooms. Also, there could be support for Dedicated Servers. I've considered the P2P model too, but it doesn't seem like a good choice for a fast game like Omberma.
+
 I'm interested in decentralized networking, so I'll try to learn about it and apply in this game. Also, I wanted to make a game to play with my friends on mobile (via wireless ad-hoc network), without the need for Internet access. The LAN system is basically done, but the game is bare-bones.
 
 Still, I would like to implement ways of connecting over the Internet too. Without a centralized server, that is. The server will still be one of the players. Based on my research, there are basically 3 ways (that I know) to accomplish what I want:
