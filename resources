@@ -9,3 +9,7 @@ https://mrminimal.gitlab.io/2018/07/26/godot-dedicated-server-tutorial.html
 Godot support for interesting things:
 
 https://docs.godotengine.org/en/latest/classes/class_upnp.html
+
+Summary of networking options:
+
+https://godotengine.org/qa/43665/how-connect-two-device-with-live-server-not-localhost-godot
