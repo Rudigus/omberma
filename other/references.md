@@ -14,6 +14,8 @@
 
 ## Networking information:
 
+[Github PR - Add UPnP support](https://github.com/godotengine/godot/pull/18780)
+
 [Godot QA - Networking options](https://godotengine.org/qa/43665/how-connect-two-device-with-live-server-not-localhost-godot)
 
 [What every programmer needs to know about networking](https://gafferongames.com/post/what_every_programmer_needs_to_know_about_game_networking/)
