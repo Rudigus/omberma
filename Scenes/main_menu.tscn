@@ -22,7 +22,7 @@ __meta__ = {
 margin_left = 100.0
 margin_top = 100.0
 margin_right = 924.0
-margin_bottom = 500.0
+margin_bottom = 611.0
 custom_constants/separation = 40
 
 [node name="title" type="Label" parent="menu"]
@@ -37,13 +37,13 @@ __meta__ = {
 }
 
 [node name="host" type="GridContainer" parent="menu"]
-margin_left = 299.0
+margin_left = 211.0
 margin_top = 128.0
-margin_right = 524.0
+margin_right = 612.0
 margin_bottom = 216.0
 size_flags_horizontal = 4
 custom_constants/hseparation = 50
-columns = 2
+columns = 3
 
 [node name="name_label" type="Label" parent="menu/host"]
 margin_right = 94.0
@@ -56,9 +56,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="spacer" type="Control" parent="menu/host"]
+[node name="mode_edit" type="Label" parent="menu/host"]
 margin_left = 144.0
-margin_right = 225.0
+margin_right = 270.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 2 )
+text = "Mode"
+
+[node name="spacer" type="Control" parent="menu/host"]
+margin_left = 320.0
+margin_right = 401.0
 margin_bottom = 37.0
 
 [node name="name_edit" type="LineEdit" parent="menu/host"]
@@ -75,10 +82,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="host_button" type="Button" parent="menu/host"]
+[node name="mode_dropdown" type="OptionButton" parent="menu/host"]
 margin_left = 144.0
 margin_top = 41.0
-margin_right = 225.0
+margin_right = 270.0
+margin_bottom = 88.0
+custom_fonts/font = ExtResource( 2 )
+text = "Classic"
+items = [ "Classic", null, false, 0, null, "UPnP", null, false, 1, null ]
+selected = 0
+
+[node name="host_button" type="Button" parent="menu/host"]
+margin_left = 320.0
+margin_top = 41.0
+margin_right = 401.0
 margin_bottom = 84.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
@@ -88,24 +105,56 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="browse" type="Button" parent="menu"]
-margin_left = 294.0
+[node name="join" type="GridContainer" parent="menu"]
+margin_left = 344.0
 margin_top = 256.0
-margin_right = 529.0
-margin_bottom = 299.0
+margin_right = 479.0
+margin_bottom = 340.0
+size_flags_horizontal = 4
+columns = 2
+
+[node name="ip_label" type="Label" parent="menu/join"]
+margin_right = 58.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 2 )
+text = "IP"
+
+[node name="spacer" type="Control" parent="menu/join"]
+margin_left = 62.0
+margin_right = 135.0
+margin_bottom = 37.0
+
+[node name="ip_edit" type="LineEdit" parent="menu/join"]
+margin_top = 41.0
+margin_right = 58.0
+margin_bottom = 84.0
+
+[node name="join_button" type="Button" parent="menu/join"]
+margin_left = 62.0
+margin_top = 41.0
+margin_right = 135.0
+margin_bottom = 84.0
+custom_fonts/font = ExtResource( 2 )
+text = "Join"
+
+[node name="browse" type="Button" parent="menu"]
+margin_left = 252.0
+margin_top = 380.0
+margin_right = 571.0
+margin_bottom = 423.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
-text = "Browse Servers"
+text = "Browse Local Servers"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="error_label" type="Label" parent="menu"]
 margin_left = 412.0
-margin_top = 339.0
+margin_top = 463.0
 margin_right = 412.0
-margin_bottom = 376.0
+margin_bottom = 500.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )

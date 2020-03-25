@@ -6,6 +6,7 @@ onready var ErrorLabel = $menu/error_label
 onready var Host = $menu/host/host_button
 onready var Lobby = preload("res://Scenes/lobby.tscn")
 onready var Room = preload("res://Scenes/room.tscn")
+onready var ModeDropdown = $menu/host/mode_dropdown
 
 #func _ready():
 	# Called every time the node is added to the scene.
@@ -22,6 +23,15 @@ func _on_host_pressed():
 	# Server can be already running on the same machine
 	#	ErrorLabel.text = "Couldn't create server."
 	#	return
+	var selectedItemText = \
+	ModeDropdown.get_item_text(ModeDropdown.get_selected_id())
+	if selectedItemText == "UPnP":
+		var upnp = UPNP.new()
+		upnp.discover()
+		print(upnp)
+		#//upnp.add_port_mapping(1234)
+		#print(upnp)
+		#upnp.delete_port_mapping(1234)
 	
 	var player_name = Name.text
 	gamestate.host_game(player_name)
