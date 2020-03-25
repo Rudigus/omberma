@@ -7,27 +7,28 @@
 [node name="main_menu" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_bottom = 4.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_constants/margin_right = 100
-custom_constants/margin_top = 100
-custom_constants/margin_left = 100
-custom_constants/margin_bottom = 100
+custom_constants/margin_right = 200
+custom_constants/margin_top = 50
+custom_constants/margin_left = 200
+custom_constants/margin_bottom = 50
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="menu" type="VBoxContainer" parent="."]
-margin_left = 100.0
-margin_top = 100.0
-margin_right = 924.0
-margin_bottom = 611.0
+margin_left = 200.0
+margin_top = 50.0
+margin_right = 824.0
+margin_bottom = 562.0
 custom_constants/separation = 40
 
 [node name="title" type="Label" parent="menu"]
-margin_left = 237.0
-margin_right = 587.0
+margin_left = 137.0
+margin_right = 487.0
 margin_bottom = 88.0
 size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 3 )
@@ -36,43 +37,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="host" type="GridContainer" parent="menu"]
-margin_left = 211.0
+[node name="name" type="VBoxContainer" parent="menu"]
+margin_left = 212.0
 margin_top = 128.0
-margin_right = 612.0
+margin_right = 412.0
 margin_bottom = 216.0
 size_flags_horizontal = 4
-custom_constants/hseparation = 50
-columns = 3
 
-[node name="name_label" type="Label" parent="menu/host"]
-margin_right = 94.0
+[node name="name_label" type="Label" parent="menu/name"]
+margin_right = 86.0
 margin_bottom = 37.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
-text = "Name:"
+text = "Name"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="mode_edit" type="Label" parent="menu/host"]
-margin_left = 144.0
-margin_right = 270.0
-margin_bottom = 37.0
-custom_fonts/font = ExtResource( 2 )
-text = "Mode"
-
-[node name="spacer" type="Control" parent="menu/host"]
-margin_left = 320.0
-margin_right = 401.0
-margin_bottom = 37.0
-
-[node name="name_edit" type="LineEdit" parent="menu/host"]
+[node name="name_edit" type="LineEdit" parent="menu/name"]
 margin_top = 41.0
-margin_right = 94.0
+margin_right = 200.0
 margin_bottom = 88.0
-size_flags_horizontal = 2
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
 size_flags_vertical = 2
 custom_fonts/font = ExtResource( 2 )
 text = "Joe"
@@ -82,68 +70,127 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="mode_dropdown" type="OptionButton" parent="menu/host"]
-margin_left = 144.0
+[node name="server" type="TabContainer" parent="menu"]
+margin_top = 256.0
+margin_right = 624.0
+margin_bottom = 380.0
+rect_min_size = Vector2( 0, 124 )
+tab_align = 0
+
+[node name="host" type="GridContainer" parent="menu/server"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 4
+custom_constants/hseparation = 50
+columns = 2
+
+[node name="mode_edit" type="Label" parent="menu/server/host"]
+margin_right = 126.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 2 )
+text = "Mode"
+
+[node name="spacer" type="Control" parent="menu/server/host"]
+margin_left = 176.0
+margin_right = 257.0
+margin_bottom = 37.0
+
+[node name="mode_dropdown" type="OptionButton" parent="menu/server/host"]
 margin_top = 41.0
-margin_right = 270.0
-margin_bottom = 88.0
+margin_right = 126.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 126, 0 )
 custom_fonts/font = ExtResource( 2 )
 text = "Classic"
 items = [ "Classic", null, false, 0, null, "UPnP", null, false, 1, null ]
 selected = 0
 
-[node name="host_button" type="Button" parent="menu/host"]
-margin_left = 320.0
+[node name="host_button" type="Button" parent="menu/server/host"]
+margin_left = 176.0
 margin_top = 41.0
-margin_right = 401.0
+margin_right = 257.0
 margin_bottom = 84.0
-size_flags_horizontal = 2
-size_flags_vertical = 2
 custom_fonts/font = ExtResource( 2 )
 text = "Host"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="join" type="GridContainer" parent="menu"]
-margin_left = 344.0
-margin_top = 256.0
-margin_right = 479.0
-margin_bottom = 340.0
+[node name="join" type="GridContainer" parent="menu/server"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
 size_flags_horizontal = 4
-columns = 2
+custom_constants/hseparation = 50
+columns = 3
 
-[node name="ip_label" type="Label" parent="menu/join"]
-margin_right = 58.0
+[node name="ip_label" type="Label" parent="menu/server/join"]
+margin_right = 363.0
 margin_bottom = 37.0
 custom_fonts/font = ExtResource( 2 )
 text = "IP"
 
-[node name="spacer" type="Control" parent="menu/join"]
-margin_left = 62.0
-margin_right = 135.0
+[node name="spacer" type="Control" parent="menu/server/join"]
+margin_left = 413.0
+margin_right = 486.0
 margin_bottom = 37.0
 
-[node name="ip_edit" type="LineEdit" parent="menu/join"]
-margin_top = 41.0
-margin_right = 58.0
-margin_bottom = 84.0
+[node name="other_spacer" type="Control" parent="menu/server/join"]
+margin_left = 536.0
+margin_right = 616.0
+margin_bottom = 37.0
 
-[node name="join_button" type="Button" parent="menu/join"]
-margin_left = 62.0
+[node name="ip_edit" type="LineEdit" parent="menu/server/join"]
 margin_top = 41.0
-margin_right = 135.0
-margin_bottom = 84.0
+margin_right = 363.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+
+[node name="join_button" type="Button" parent="menu/server/join"]
+margin_left = 413.0
+margin_top = 41.0
+margin_right = 486.0
+margin_bottom = 88.0
 custom_fonts/font = ExtResource( 2 )
 text = "Join"
 
-[node name="browse" type="Button" parent="menu"]
-margin_left = 252.0
-margin_top = 380.0
-margin_right = 571.0
-margin_bottom = 423.0
-size_flags_horizontal = 4
-size_flags_vertical = 0
+[node name="stop_button" type="Button" parent="menu/server/join"]
+margin_left = 536.0
+margin_top = 41.0
+margin_right = 616.0
+margin_bottom = 88.0
+custom_fonts/font = ExtResource( 2 )
+disabled = true
+text = "Stop"
+
+[node name="browse" type="GridContainer" parent="menu/server"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="spacer" type="Control" parent="menu/server/browse"]
+margin_right = 319.0
+margin_bottom = 41.0
+size_flags_vertical = 3
+
+[node name="browse_button" type="Button" parent="menu/server/browse"]
+margin_top = 45.0
+margin_right = 319.0
+margin_bottom = 88.0
 custom_fonts/font = ExtResource( 2 )
 text = "Browse Local Servers"
 __meta__ = {
@@ -151,10 +198,10 @@ __meta__ = {
 }
 
 [node name="error_label" type="Label" parent="menu"]
-margin_left = 412.0
-margin_top = 463.0
-margin_right = 412.0
-margin_bottom = 500.0
+margin_left = 312.0
+margin_top = 420.0
+margin_right = 312.0
+margin_bottom = 457.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
@@ -163,5 +210,7 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="menu/host/host_button" to="." method="_on_host_pressed"]
-[connection signal="pressed" from="menu/browse" to="." method="_on_browse_pressed"]
+[connection signal="pressed" from="menu/server/host/host_button" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="menu/server/join/join_button" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="menu/server/join/stop_button" to="." method="_on_stop_button_pressed"]
+[connection signal="pressed" from="menu/server/browse/browse_button" to="." method="_on_browse_pressed"]

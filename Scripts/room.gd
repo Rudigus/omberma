@@ -47,8 +47,12 @@ func refresh_settings():
 
 func _on_leave_pressed():
 	gamestate.players.clear()
+	var isServer = get_tree().is_network_server()
 	get_tree().set_network_peer(null)
-	get_tree().change_scene_to(Lobby)
+	if isServer:
+		get_tree().change_scene_to(MainMenu)
+	else:
+		get_tree().change_scene_to(Lobby)
 
 func _on_start_pressed():
 	gamestate.begin_game()

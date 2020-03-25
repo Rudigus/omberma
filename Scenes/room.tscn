@@ -52,6 +52,7 @@ size_flags_vertical = 3
 margin_right = 624.0
 margin_bottom = 340.0
 size_flags_vertical = 3
+tab_align = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
