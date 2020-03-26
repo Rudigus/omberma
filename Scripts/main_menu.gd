@@ -36,7 +36,7 @@ func _on_host_pressed():
 		# If the functions returns a non-zero value (failure)
 		if gamestate.upnp.discover() or \
 		gamestate.upnp.add_port_mapping(gamestate.DEFAULT_PORT):
-			ErrorLabel.text = "UPNP error"
+			ErrorLabel.text = "UPnP error"
 			return
 	
 	get_tree().change_scene_to(Room)
