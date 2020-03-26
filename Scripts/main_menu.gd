@@ -50,8 +50,11 @@ func _on_join_button_pressed():
 
 	var ip = Ip.text
 	if not ip.is_valid_ip_address():
-		ErrorLabel.text = "Invalid IP address!"
-		return
+		# DNS support
+		ip = IP.resolve_hostname(ip)
+		if not ip.is_valid_ip_address():
+			ErrorLabel.text = "Invalid IP address!"
+			return
 
 	gamestate.join_game(ip, player_name)
 	Stop.disabled = false
