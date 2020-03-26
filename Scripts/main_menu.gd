@@ -25,20 +25,20 @@ func _on_host_pressed():
 		ErrorLabel.text = "Invalid name!"
 		return
 
-	var selectedItemText = \
-	ModeDropdown.get_item_text(ModeDropdown.get_selected_id())
-	if selectedItemText == "UPnP":
-		var upnp = UPNP.new()
-		upnp.discover()
-		print(upnp)
-		#//upnp.add_port_mapping(1234)
-		#print(upnp)
-		#upnp.delete_port_mapping(1234)
-
 	gamestate.host_game(player_name)
 	if(!get_tree().has_network_peer()):
 		ErrorLabel.text = "Couldn't create server!"
 		return
+	var selectedItemText = \
+	ModeDropdown.get_item_text(ModeDropdown.get_selected_id())
+	if selectedItemText == "UPnP":
+		gamestate.upnp = UPNP.new()
+		# If the functions returns a non-zero value (failure)
+		if gamestate.upnp.discover() or \
+		gamestate.upnp.add_port_mapping(gamestate.DEFAULT_PORT):
+			ErrorLabel.text = "UPNP error"
+			return
+	
 	get_tree().change_scene_to(Room)
 
 func _on_join_button_pressed():

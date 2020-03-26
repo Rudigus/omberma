@@ -20,6 +20,10 @@ var settings = {}
 
 var servers = {}
 
+# UPnP
+
+var upnp: UPNP
+
 # Error in the game
 var errtxt = ""
 

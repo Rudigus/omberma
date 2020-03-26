@@ -23,7 +23,7 @@ __meta__ = {
 margin_left = 200.0
 margin_top = 50.0
 margin_right = 824.0
-margin_bottom = 562.0
+margin_bottom = 554.0
 custom_constants/separation = 40
 
 [node name="title" type="Label" parent="menu"]
@@ -78,7 +78,6 @@ rect_min_size = Vector2( 0, 124 )
 tab_align = 0
 
 [node name="host" type="GridContainer" parent="menu/server"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -175,6 +174,7 @@ disabled = true
 text = "Stop"
 
 [node name="browse" type="GridContainer" parent="menu/server"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0

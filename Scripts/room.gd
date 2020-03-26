@@ -49,6 +49,8 @@ func _on_leave_pressed():
 	gamestate.players.clear()
 	var isServer = get_tree().is_network_server()
 	get_tree().set_network_peer(null)
+	if gamestate.upnp != null:
+		print(gamestate.upnp.delete_port_mapping(gamestate.DEFAULT_PORT))
 	if isServer:
 		get_tree().change_scene_to(MainMenu)
 	else:
