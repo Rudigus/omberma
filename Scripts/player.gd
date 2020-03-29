@@ -7,7 +7,9 @@ puppet var puppet_motion = Vector2()
 
 export var stunned = false
 
-var playerLives = gamestate.settings["Player Lives"]
+var player_lives = gamestate.settings["Player Lives"]
+var bomb_capacity = gamestate.settings["Bomb Capacity"]
+var available_bombs = bomb_capacity
 
 # Use sync because it will be called everywhere
 sync func setup_bomb(bomb_name, pos, by_who):
@@ -15,6 +17,7 @@ sync func setup_bomb(bomb_name, pos, by_who):
 	bomb.set_name(bomb_name) # Ensure unique name for the bomb
 	bomb.position = pos
 	bomb.from_player = by_who
+	bomb.Bomber = $"."
 	# No need to set network master to bomb, will be owned by server by default
 	get_node("../..").add_child(bomb)
 
@@ -41,9 +44,10 @@ func _physics_process(_delta):
 			bombing = false
 			motion = Vector2()
 
-		if bombing and not prev_bombing:
+		if bombing and not prev_bombing and available_bombs > 0:
 			var bomb_name = get_name() + str(bomb_index)
 			var bomb_pos = position
+			available_bombs -= 1
 			rpc("setup_bomb", bomb_name, bomb_pos, get_tree().get_network_unique_id())
 
 		prev_bombing = bombing
@@ -90,10 +94,13 @@ func set_player_name(new_name):
 	get_node("label").set_text(new_name)
 	
 remotesync func decrease_player_lives():
-	playerLives -= 1
-	print(playerLives)
-	if playerLives <= 0:
+	player_lives -= 1
+	print(player_lives)
+	if player_lives <= 0:
 		queue_free()
+
+remotesync func recharge_bombs():
+	available_bombs += 1
 
 func _ready():
 	stunned = false

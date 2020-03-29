@@ -4,6 +4,7 @@ var player_labels = {}
 
 func _process(_delta):
 	var players_left = get_node("../players").get_child_count()
+	#players_left = 0 # Condition to test the game with only 1 client
 	if players_left == 1:
 		var winner_name = \
 		get_node("../players").get_child(0).get_node("label").get_text()

@@ -2,12 +2,15 @@ extends Area2D
 
 var in_area = []
 var from_player
+var Bomber
 
 # Called from the animation
 func explode():
 	if not is_network_master():
 		# But will call explosion only on master
 		return
+	if Bomber.has_method("recharge_bombs"):
+		Bomber.rpc("recharge_bombs")
 	for p in in_area:
 		if p.has_method("exploded"):
 			p.rpc("exploded", from_player) # Exploded has a master keyword, so it will only be received by the master

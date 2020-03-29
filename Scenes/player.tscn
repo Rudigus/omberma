@@ -5,7 +5,7 @@
 [ext_resource path="res://Resources/montserrat.otf" type="DynamicFontData" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 20.0
+radius = 15.7859
 
 [sub_resource type="Animation" id=2]
 resource_name = "standing"
@@ -146,6 +146,7 @@ vframes = 4
 hframes = 4
 
 [node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 2.92686 )
 shape = SubResource( 1 )
 
 [node name="anim" type="AnimationPlayer" parent="."]

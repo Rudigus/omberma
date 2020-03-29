@@ -20,8 +20,8 @@ __meta__ = {
 }
 defaultSettings = {
 "Blast Power": 1,
+"Bomb Capacity": 1,
 "Bomb Timeout": 3,
-"Bombs": 1,
 "Player Lives": 1,
 "Player Speed": 1
 }
