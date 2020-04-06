@@ -1,6 +1,7 @@
 extends Control
 
 onready var Title = $menu/title
+onready var NameGroup = $menu/name
 onready var Name = $menu/name/name_edit
 onready var Ip = $menu/server/join/ip_edit
 onready var ErrorLabel = $menu/error_label
@@ -10,6 +11,9 @@ onready var Join = $menu/server/join/join_button
 onready var Lobby = preload("res://Scenes/lobby.tscn")
 onready var Room = preload("res://Scenes/room.tscn")
 onready var ModeDropdown = $menu/server/host/mode_dropdown
+onready var Server = $menu/server
+onready var SettingsLabel = $menu/settings_label
+onready var TrackSelector = $track_selector
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -83,3 +87,20 @@ func _on_connection_failed():
 
 func _on_stop_button_pressed():
 	get_tree().emit_signal("connection_failed")
+
+
+func _on_server_tab_changed(tab):
+	if Server.get_tab_title(tab) == "settings":
+		Server.set_v_size_flags(SIZE_EXPAND_FILL)
+		NameGroup.hide()
+		Title.hide()
+		SettingsLabel.show()
+	else:
+		Server.set_v_size_flags(SIZE_FILL)
+		NameGroup.show()
+		Title.show()
+		SettingsLabel.hide()
+
+
+func _on_select_track_pressed():
+	TrackSelector.popup_centered()
