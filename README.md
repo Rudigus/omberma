@@ -23,7 +23,7 @@ Still, I would like to implement ways of connecting over the Internet too. Witho
 ### Programming
 
 - [Godot](https://github.com/godotengine/godot) by [Godot Engine](https://github.com/godotengine).
-- [Enet](https://github.com/lsalzman/enet) by [Lee Salzman](https://github.com/lsalzman).
+- [ENet](https://github.com/lsalzman/enet) by [Lee Salzman](https://github.com/lsalzman).
 - [multiplayer_bomber](https://github.com/godotengine/godot-demo-projects/tree/master/networking/multiplayer_bomber) by [Godot Engine](https://github.com/godotengine). 
 - [LANServerBroadcast](https://github.com/Wavesonics/LANServerBroadcast) by [Wavesonics](https://github.com/Wavesonics).
 
