@@ -18,6 +18,20 @@ Still, I would like to implement ways of connecting over the Internet too. Witho
 
 1. IPv6 - Well, since IPv6 addresses are unique to each device, we don't have problem with NAT (Network Address Translation), so the communication is easier.
 
-### Credits
+## Credits
 
-Based on [multiplayer_bomber](https://github.com/godotengine/godot-demo-projects/tree/master/networking/multiplayer_bomber) by Godot Engine. Uses [LANServerBroadcast](https://github.com/Wavesonics/LANServerBroadcast) by Wavesonics.
+### Programming
+
+- [Godot](https://github.com/godotengine/godot) by [Godot Engine](https://github.com/godotengine).
+- [Enet](https://github.com/lsalzman/enet) by [Lee Salzman](https://github.com/lsalzman).
+- [multiplayer_bomber](https://github.com/godotengine/godot-demo-projects/tree/master/networking/multiplayer_bomber) by [Godot Engine](https://github.com/godotengine). 
+- [LANServerBroadcast](https://github.com/Wavesonics/LANServerBroadcast) by [Wavesonics](https://github.com/Wavesonics).
+
+### Fonts
+
+- [Bitter](https://fonts.google.com/specimen/Bitter) by [Huerta Tipográfica](https://www.huertatipografica.com/en).
+- [Ubuntu](https://fonts.google.com/specimen/Ubuntu) by [Dalton Maag](https://www.daltonmaag.com/).
+
+### Audio
+
+- [The River](https://freemusicarchive.org/music/Rolemusic/~/The_River_1161) by [Rolemusic](https://freemusicarchive.org/music/Rolemusic).
