@@ -27,11 +27,16 @@ Still, I would like to implement ways of connecting over the Internet too. Witho
 - [multiplayer_bomber](https://github.com/godotengine/godot-demo-projects/tree/master/networking/multiplayer_bomber) by [Godot Engine](https://github.com/godotengine). 
 - [LANServerBroadcast](https://github.com/Wavesonics/LANServerBroadcast) by [Wavesonics](https://github.com/Wavesonics).
 
-### Fonts
+### Art
 
-- [Bitter](https://fonts.google.com/specimen/Bitter) by [Huerta Tipográfica](https://www.huertatipografica.com/en).
-- [Ubuntu](https://fonts.google.com/specimen/Ubuntu) by [Dalton Maag](https://www.daltonmaag.com/).
+Coming soon...
 
 ### Audio
 
 - [The River](https://freemusicarchive.org/music/Rolemusic/~/The_River_1161) by [Rolemusic](https://freemusicarchive.org/music/Rolemusic).
+
+### Fonts
+
+- [Bitter](https://fonts.google.com/specimen/Bitter) by [Huerta Tipográfica](https://www.huertatipografica.com/en).
+- [Ubuntu](https://fonts.google.com/specimen/Ubuntu) by [Dalton Maag](https://www.daltonmaag.com/).
+- [Montserrat](https://fonts.google.com/specimen/Montserrat) by [Julieta Ulanovsky](https://www.fontsquirrel.com/fonts/list/foundry/julieta-ulanovsky).
