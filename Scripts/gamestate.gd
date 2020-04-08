@@ -27,9 +27,15 @@ var upnp: UPNP
 # Error in the game
 var errtxt = ""
 
+# Scenes
+
+onready var MainMenu = preload("res://Scenes/main_menu.tscn")
+
+onready var MainSettings = preload("res://Scenes/main_settings.tscn")
+
 onready var Lobby = preload("res://Scenes/lobby.tscn")
 
-#onready var Room = preload("res://Scenes/room.tscn")
+onready var Room = preload("res://Scenes/room.tscn")
 
 # Signals to let lobby GUI know what's going on
 signal player_list_changed()

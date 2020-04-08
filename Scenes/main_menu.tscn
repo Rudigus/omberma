@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Resources/Ubuntu-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Resources/Ubuntu.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Resources/Bitter-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Resources/Bitter.tres" type="DynamicFont" id=5]
@@ -9,10 +8,6 @@
 [sub_resource type="DynamicFont" id=1]
 size = 48
 font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 18
-font_data = ExtResource( 1 )
 
 [node name="main_menu" type="MarginContainer"]
 anchor_right = 1.0
@@ -32,13 +27,13 @@ __meta__ = {
 [node name="menu" type="VBoxContainer" parent="."]
 margin_left = 200.0
 margin_top = 50.0
-margin_right = 850.0
+margin_right = 824.0
 margin_bottom = 554.0
 custom_constants/separation = 40
 
 [node name="title" type="Label" parent="menu"]
-margin_left = 150.0
-margin_right = 500.0
+margin_left = 137.0
+margin_right = 487.0
 margin_bottom = 88.0
 size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 5 )
@@ -58,9 +53,9 @@ custom_fonts/font = SubResource( 1 )
 text = "Settings"
 
 [node name="name" type="VBoxContainer" parent="menu"]
-margin_left = 225.0
+margin_left = 212.0
 margin_top = 128.0
-margin_right = 425.0
+margin_right = 412.0
 margin_bottom = 216.0
 size_flags_horizontal = 4
 
@@ -92,13 +87,12 @@ __meta__ = {
 
 [node name="server" type="TabContainer" parent="menu"]
 margin_top = 256.0
-margin_right = 650.0
-margin_bottom = 412.0
+margin_right = 624.0
+margin_bottom = 380.0
 rect_min_size = Vector2( 0, 124 )
 tab_align = 0
 
 [node name="host" type="GridContainer" parent="menu/server"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -221,7 +215,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="settings" type="TabContainer" parent="menu/server"]
+[node name="settings" type="GridContainer" parent="menu/server"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -229,77 +224,26 @@ margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="audio" type="GridContainer" parent="menu/server/settings"]
+[node name="spacer" type="Control" parent="menu/server/settings"]
+margin_right = 319.0
+margin_bottom = 41.0
+size_flags_vertical = 3
+
+[node name="settings_button" type="Button" parent="menu/server/settings"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
 margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
-custom_constants/hseparation = 50
-columns = 4
-
-[node name="artist_label" type="Label" parent="menu/server/settings/audio"]
-margin_right = 84.0
-margin_bottom = 37.0
+margin_right = -600.0
+margin_bottom = -36.0
 custom_fonts/font = ExtResource( 2 )
-text = "Artist"
-
-[node name="track_label" type="Label" parent="menu/server/settings/audio"]
-margin_left = 134.0
-margin_right = 213.0
-margin_bottom = 37.0
-custom_fonts/font = ExtResource( 2 )
-text = "Track"
-
-[node name="license_label" type="Label" parent="menu/server/settings/audio"]
-margin_left = 263.0
-margin_right = 396.0
-margin_bottom = 37.0
-custom_fonts/font = ExtResource( 2 )
-text = "License"
-
-[node name="spacer" type="Control" parent="menu/server/settings/audio"]
-margin_left = 446.0
-margin_right = 634.0
-margin_bottom = 37.0
-
-[node name="artist_name" type="Label" parent="menu/server/settings/audio"]
-margin_top = 52.0
-margin_right = 84.0
-margin_bottom = 73.0
-custom_fonts/font = SubResource( 2 )
-text = "Rolemusic"
-
-[node name="track_name" type="Label" parent="menu/server/settings/audio"]
-margin_left = 134.0
-margin_top = 52.0
-margin_right = 213.0
-margin_bottom = 73.0
-custom_fonts/font = SubResource( 2 )
-text = "The River"
-
-[node name="license_name" type="Label" parent="menu/server/settings/audio"]
-margin_left = 263.0
-margin_top = 52.0
-margin_right = 396.0
-margin_bottom = 73.0
-custom_fonts/font = SubResource( 2 )
-text = "CC BY-NC-SA 3.0"
-
-[node name="select_track" type="Button" parent="menu/server/settings/audio"]
-margin_left = 446.0
-margin_top = 41.0
-margin_right = 634.0
-margin_bottom = 84.0
-custom_fonts/font = ExtResource( 2 )
-text = "Select Track"
+text = "Settings"
 
 [node name="error_label" type="Label" parent="menu"]
-margin_left = 325.0
-margin_top = 452.0
-margin_right = 325.0
-margin_bottom = 489.0
+margin_left = 312.0
+margin_top = 420.0
+margin_right = 312.0
+margin_bottom = 457.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
@@ -308,22 +252,8 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="track_selector" type="FileDialog" parent="."]
-margin_left = 200.0
-margin_top = 50.0
-margin_right = 850.0
-margin_bottom = 554.0
-rect_min_size = Vector2( 200, 200 )
-window_title = "Open a File"
-resizable = true
-mode = 0
-access = 2
-current_dir = "/home/rudigus/Github/omberma"
-current_file = "Rolemusic_-_the_river.ogg"
-current_path = "/home/rudigus/Github/omberma/Rolemusic_-_the_river.ogg"
-[connection signal="tab_changed" from="menu/server" to="." method="_on_server_tab_changed"]
+[connection signal="pressed" from="menu/server/host/host_button" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="menu/server/join/join_button" to="." method="_on_join_button_pressed"]
 [connection signal="pressed" from="menu/server/join/stop_button" to="." method="_on_stop_button_pressed"]
 [connection signal="pressed" from="menu/server/browse/browse_button" to="." method="_on_browse_pressed"]
-[connection signal="pressed" from="menu/server/settings/audio/select_track" to="." method="_on_select_track_pressed"]
+[connection signal="pressed" from="menu/server/settings/settings_button" to="." method="_on_settings_button_pressed"]

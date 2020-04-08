@@ -2,8 +2,6 @@ extends Control
 
 export (NodePath) var serverListPath: NodePath
 onready var ServerList := get_node(serverListPath)
-onready var MainMenu = load("res://Scenes/main_menu.tscn")
-onready var Room = preload("res://Scenes/room.tscn")
 onready var Error = $menu/error
 
 # Signals are bad. Remember it. In the end, changing
@@ -31,7 +29,7 @@ func _on_listener_remove_server(serverIp):
 			break
 
 func _on_back_pressed():
-	get_tree().change_scene_to(MainMenu)
+	get_tree().change_scene_to(gamestate.MainMenu)
 	
 #func _on_game_error(errtxt):
 #	Error.dialog_text = errtxt
@@ -41,4 +39,4 @@ func _on_back_pressed():
 func _on_list_item_selected(index):
 	gamestate.join_game(gamestate.servers[index].ip, \
 	gamestate.player_name)
-	get_tree().change_scene_to(Room)
+	get_tree().change_scene_to(gamestate.Room)

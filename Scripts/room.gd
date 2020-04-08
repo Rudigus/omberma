@@ -7,8 +7,7 @@ onready var TabList = $menu/main_area/lists
 onready var Modifiers = $menu/main_area/modifiers
 onready var Increase = $menu/main_area/modifiers/increase
 onready var Decrease = $menu/main_area/modifiers/decrease
-onready var MainMenu = load("res://Scenes/main_menu.tscn")
-onready var Lobby = load("res://Scenes/lobby.tscn")
+
 export(Dictionary) var defaultSettings = {}
 # The lowest value a power-up can go
 const MIN_POWERUP_VALUE = 1
@@ -52,9 +51,9 @@ func _on_leave_pressed():
 	if gamestate.upnp != null:
 		print(gamestate.upnp.delete_port_mapping(gamestate.DEFAULT_PORT))
 	if isServer:
-		get_tree().change_scene_to(MainMenu)
+		get_tree().change_scene_to(gamestate.MainMenu)
 	else:
-		get_tree().change_scene_to(Lobby)
+		get_tree().change_scene_to(gamestate.Lobby)
 
 func _on_start_pressed():
 	gamestate.begin_game()

@@ -8,12 +8,9 @@ onready var ErrorLabel = $menu/error_label
 onready var Host = $menu/server/host/host_button
 onready var Stop = $menu/server/join/stop_button
 onready var Join = $menu/server/join/join_button
-onready var Lobby = preload("res://Scenes/lobby.tscn")
-onready var Room = preload("res://Scenes/room.tscn")
 onready var ModeDropdown = $menu/server/host/mode_dropdown
 onready var Server = $menu/server
 onready var SettingsLabel = $menu/settings_label
-onready var TrackSelector = $track_selector
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -21,8 +18,8 @@ func _ready():
 	gamestate.connect("connection_failed", self, "_on_connection_failed")
 	gamestate.connect("connection_succeeded", self, "_on_connection_success")
 	#gamestate.connect("game_ended", self, "_on_game_ended")
-
-func _on_host_pressed():
+	
+func _on_host_button_pressed():
 
 	var player_name = Name.text
 	if player_name == "":
@@ -42,8 +39,8 @@ func _on_host_pressed():
 		gamestate.upnp.add_port_mapping(gamestate.DEFAULT_PORT):
 			ErrorLabel.text = "UPnP error"
 			return
-	
-	get_tree().change_scene_to(Room)
+
+	get_tree().change_scene_to(gamestate.Room)
 
 func _on_join_button_pressed():
 
@@ -71,10 +68,10 @@ func _on_browse_pressed():
 		return
 
 	gamestate.player_name = Name.text
-	get_tree().change_scene_to(Lobby)
+	get_tree().change_scene_to(gamestate.Lobby)
 
 func _on_connection_success():
-	get_tree().change_scene_to(Room)
+	get_tree().change_scene_to(gamestate.Room)
 
 func _on_connection_failed():
 	ErrorLabel.set_text("Connection failed.")
@@ -88,19 +85,5 @@ func _on_connection_failed():
 func _on_stop_button_pressed():
 	get_tree().emit_signal("connection_failed")
 
-
-func _on_server_tab_changed(tab):
-	if Server.get_tab_title(tab) == "settings":
-		Server.set_v_size_flags(SIZE_EXPAND_FILL)
-		NameGroup.hide()
-		Title.hide()
-		SettingsLabel.show()
-	else:
-		Server.set_v_size_flags(SIZE_FILL)
-		NameGroup.show()
-		Title.show()
-		SettingsLabel.hide()
-
-
-func _on_select_track_pressed():
-	TrackSelector.popup_centered()
+func _on_settings_button_pressed():
+	get_tree().change_scene_to(gamestate.MainSettings)
