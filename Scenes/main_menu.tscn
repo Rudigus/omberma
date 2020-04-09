@@ -27,13 +27,13 @@ __meta__ = {
 [node name="menu" type="VBoxContainer" parent="."]
 margin_left = 200.0
 margin_top = 50.0
-margin_right = 824.0
-margin_bottom = 554.0
+margin_right = 808.0
+margin_bottom = 578.0
 custom_constants/separation = 40
 
 [node name="title" type="Label" parent="menu"]
-margin_left = 137.0
-margin_right = 487.0
+margin_left = 129.0
+margin_right = 479.0
 margin_bottom = 88.0
 size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 5 )
@@ -53,9 +53,9 @@ custom_fonts/font = SubResource( 1 )
 text = "Settings"
 
 [node name="name" type="VBoxContainer" parent="menu"]
-margin_left = 212.0
+margin_left = 204.0
 margin_top = 128.0
-margin_right = 412.0
+margin_right = 404.0
 margin_bottom = 216.0
 size_flags_horizontal = 4
 
@@ -87,7 +87,7 @@ __meta__ = {
 
 [node name="server" type="TabContainer" parent="menu"]
 margin_top = 256.0
-margin_right = 624.0
+margin_right = 608.0
 margin_bottom = 380.0
 rect_min_size = Vector2( 0, 124 )
 tab_align = 0
@@ -240,9 +240,9 @@ custom_fonts/font = ExtResource( 2 )
 text = "Settings"
 
 [node name="error_label" type="Label" parent="menu"]
-margin_left = 312.0
+margin_left = 304.0
 margin_top = 420.0
-margin_right = 312.0
+margin_right = 304.0
 margin_bottom = 457.0
 size_flags_horizontal = 4
 size_flags_vertical = 0

@@ -64,12 +64,18 @@ func _physics_process(_delta):
 	elif motion.y > 0:
 		new_anim = "walk_down"
 	elif motion.x < 0:
-		new_anim = "walk_left"
+		$sprite.flip_h = true
+		new_anim = "walk_right"
 	elif motion.x > 0:
+		$sprite.flip_h = false
 		new_anim = "walk_right"
 
 	if stunned:
 		new_anim = "stunned"
+
+	if new_anim == "standing":
+		current_anim = new_anim
+		$anim.stop()
 
 	if new_anim != current_anim:
 		current_anim = new_anim

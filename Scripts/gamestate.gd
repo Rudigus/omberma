@@ -27,6 +27,12 @@ var upnp: UPNP
 # Error in the game
 var errtxt = ""
 
+# Available player textures
+
+var player_textures = ["res://Assets/armored_goblin.png", 
+"res://Assets/goblin.png", "res://Assets/human.png", 
+"res://Assets/mage_goblin.png"]
+
 # Scenes
 
 onready var MainMenu = preload("res://Scenes/main_menu.tscn")
@@ -114,7 +120,10 @@ remote func pre_start_game(spawn_points):
 		var player = player_scene.instance()
 
 		player.set_name(str(p_id)) # Use unique ID as node name
-		player.position=spawn_pos
+		player.position = spawn_pos
+		var rng = RandomNumberGenerator.new()
+		rng.randomize()
+		player.get_node("sprite").texture = load(player_textures[rng.randi_range(0, player_textures.size() - 1)])
 		player.set_network_master(p_id) #set unique id as master
 
 		if p_id == get_tree().get_network_unique_id():
