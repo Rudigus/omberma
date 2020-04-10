@@ -38,7 +38,7 @@ func broadcast():
 	var packetMessage := to_json(serverInfo)
 	var packet := packetMessage.to_ascii()
 	socketUDP.put_packet(packet)
-	print(packet.get_string_from_utf8())
+	#print(packet.get_string_from_utf8())
 
 func _exit_tree():
 	broadcastTimer.stop()

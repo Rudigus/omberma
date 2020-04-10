@@ -44,6 +44,9 @@ func _on_host_button_pressed():
 
 func _on_join_button_pressed():
 
+	# Cleaning the error label
+	ErrorLabel.text = ""
+	
 	var player_name = Name.text
 	if player_name == "":
 		ErrorLabel.text = "Invalid name!"

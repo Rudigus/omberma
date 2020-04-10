@@ -29,13 +29,13 @@ defaultSettings = {
 [node name="menu" type="VBoxContainer" parent="."]
 margin_left = 200.0
 margin_top = 50.0
-margin_right = 824.0
-margin_bottom = 550.0
+margin_right = 808.0
+margin_bottom = 574.0
 custom_constants/separation = 40
 
 [node name="label" type="Label" parent="menu"]
-margin_left = 179.0
-margin_right = 444.0
+margin_left = 171.0
+margin_right = 436.0
 margin_bottom = 37.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -44,13 +44,13 @@ text = "Awaiting Players..."
 
 [node name="main_area" type="VBoxContainer" parent="menu"]
 margin_top = 77.0
-margin_right = 624.0
-margin_bottom = 417.0
+margin_right = 608.0
+margin_bottom = 441.0
 size_flags_vertical = 3
 
 [node name="lists" type="TabContainer" parent="menu/main_area"]
-margin_right = 624.0
-margin_bottom = 340.0
+margin_right = 608.0
+margin_bottom = 364.0
 size_flags_vertical = 3
 tab_align = 0
 __meta__ = {
@@ -82,6 +82,16 @@ theme = ExtResource( 4 )
 items = [ "Item 0", null, false ]
 select_mode = 1
 
+[node name="status" type="ItemList" parent="menu/main_area/lists"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+custom_fonts/font = ExtResource( 3 )
+
 [node name="modifiers" type="HBoxContainer" parent="menu/main_area"]
 visible = false
 margin_top = 320.0
@@ -108,10 +118,10 @@ __meta__ = {
 }
 
 [node name="buttons" type="HBoxContainer" parent="menu"]
-margin_left = 196.0
-margin_top = 457.0
-margin_right = 428.0
-margin_bottom = 500.0
+margin_left = 188.0
+margin_top = 481.0
+margin_right = 420.0
+margin_bottom = 524.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
 custom_constants/separation = 50
@@ -140,6 +150,7 @@ __meta__ = {
 [node name="advertiser" type="Node" parent="menu"]
 script = ExtResource( 1 )
 [connection signal="tab_changed" from="menu/main_area/lists" to="." method="_on_lists_tab_changed"]
+[connection signal="item_selected" from="menu/main_area/lists/status" to="." method="_on_status_item_selected"]
 [connection signal="pressed" from="menu/main_area/modifiers/increase" to="." method="_on_modifier_button_pressed" binds= [ 1 ]]
 [connection signal="pressed" from="menu/main_area/modifiers/decrease" to="." method="_on_modifier_button_pressed" binds= [ -1 ]]
 [connection signal="pressed" from="menu/buttons/start" to="." method="_on_start_pressed"]

@@ -16,6 +16,10 @@ var players = {}
 
 var settings = {}
 
+# Room status
+
+var status = {}
+
 # Servers found
 
 var servers = {}

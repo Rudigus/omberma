@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 14.5708
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "stunned"
 length = 1.2
 tracks/0/type = "value"
@@ -47,7 +47,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -63,7 +63,7 @@ tracks/0/keys = {
 "values": [ 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "walk_right"
 length = 0.8
 loop = true
@@ -81,7 +81,7 @@ tracks/0/keys = {
 "values": [ 4, 5, 6, 7 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 length = 0.6
 loop = true
 step = 0.2
@@ -98,7 +98,7 @@ tracks/0/keys = {
 "values": [ 0, 8, 9 ]
 }
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=6]
 font_data = ExtResource( 3 )
 
 [node name="player" type="KinematicBody2D"]
@@ -110,16 +110,16 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 offset = Vector2( -0.5, -2 )
 hframes = 10
-frame = 3
+frame = 1
 
 [node name="shape" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
-anims/stunned = SubResource( 3 )
-anims/walk_down = SubResource( 4 )
-anims/walk_right = SubResource( 5 )
-anims/walk_up = SubResource( 7 )
+anims/stunned = SubResource( 2 )
+anims/walk_down = SubResource( 3 )
+anims/walk_right = SubResource( 4 )
+anims/walk_up = SubResource( 5 )
 
 [node name="label" type="Label" parent="."]
 margin_left = -29.0
@@ -128,7 +128,7 @@ margin_right = 29.0
 margin_bottom = -19.0
 grow_horizontal = 2
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 6 )
 text = "Player 1"
 align = 1
 __meta__ = {
